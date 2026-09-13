@@ -317,6 +317,7 @@ checksum = "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2"
 [[package]]
 name = "lldb"
 version = "1.0.0"
+source = "git+https://github.com/vadimcn/codelldb.git?rev=62def434dc22c1d77d4837c4d99cddef7ac3338f#62def434dc22c1d77d4837c4d99cddef7ac3338f"
 dependencies = [
  "bitflags",
  "cpp",
