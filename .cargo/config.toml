@@ -1,0 +1,2 @@
+[env]
+LLDB_INCLUDE = "/usr/include"

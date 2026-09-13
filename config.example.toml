@@ -1,0 +1,23 @@
+# Path to the MWCC executable.
+compiler_path = "./compilers/2.3.3/mwccmips.exe"
+
+# Optional fallback used when the compiler executable's hash is not recognized.
+compiler_version = "2.3.3"
+
+# Optional shell-style argument string passed to MWCC before -o, the output,
+# and the input source path. Quoted values are kept as single arguments.
+compiler_options = '-O2 -c -Cpp_exceptions off -RTTI off -strings readonly -pragma "divbyzerocheck on"'
+
+# Optional path to wibo. Remove this field to use WIBO_PATH or search PATH.
+wibo_path = "/path/to/wibo"
+
+# Helper masks used when a translation unit has no matching override below.
+default_gpr_helper_mask = 0x0
+default_fpr_helper_mask = 0x0
+
+# Per-translation-unit helper mask override. Add another table for each file
+# that needs values different from the defaults.
+[[translation_units]]
+name = "sample.cpp"
+gpr_helper_mask = 0x30
+fpr_helper_mask = 0x1000

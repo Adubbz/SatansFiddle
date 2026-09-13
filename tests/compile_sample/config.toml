@@ -1,0 +1,10 @@
+compiler_path = "./compilers/2.3.3/mwccmips.exe"
+compiler_options = '-O2 -c -Cpp_exceptions off -RTTI off -strings readonly -pragma "divbyzerocheck on"'
+
+default_gpr_helper_mask = 0x0
+default_fpr_helper_mask = 0x0
+
+[[translation_units]]
+name = "sample.cpp"
+gpr_helper_mask = 0x30
+fpr_helper_mask = 0x1000
