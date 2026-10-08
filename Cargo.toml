@@ -11,6 +11,7 @@ hex = "0.4"
 hex-literal = "0.4.1"
 lldb = { git = "https://github.com/vadimcn/codelldb.git", rev = "62def434dc22c1d77d4837c4d99cddef7ac3338f", features = ["no_link_args"] }
 serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 sha2 = "0.11.0"
 shlex = "2.0.1"
 toml = "0.8"

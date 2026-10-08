@@ -1,23 +1,41 @@
-# Path to the MWCC executable.
+# Recognized compiler SHA-256 determines the validated address profile.
 compiler_path = "./compilers/2.3.3/mwccmips.exe"
-
-# Optional fallback used when the compiler executable's hash is not recognized.
+# Optional consistency check; unknown hashes are rejected even with this value.
 compiler_version = "2.3.3"
+# Version 3.0-011126 is also supported when its executable hash is recognized.
 
-# Optional shell-style argument string passed to MWCC before -o, the output,
-# and the input source path. Quoted values are kept as single arguments.
 compiler_options = '-O2 -c -Cpp_exceptions off -RTTI off -strings readonly -pragma "divbyzerocheck on"'
-
-# Optional path to wibo. Remove this field to use WIBO_PATH or search PATH.
+# Optional; otherwise WIBO_PATH or PATH supplies a debug-symbol wibo binary.
 wibo_path = "/path/to/wibo"
 
-# Helper masks used when a translation unit has no matching override below.
+# Seed helper-call register history at each translation unit (defaults: zero).
 default_gpr_helper_mask = 0x0
 default_fpr_helper_mask = 0x0
 
-# Per-translation-unit helper mask override. Add another table for each file
-# that needs values different from the defaults.
 [[translation_units]]
 name = "sample.cpp"
 gpr_helper_mask = 0x30
 fpr_helper_mask = 0x1000
+
+# Omitting this table selects the same deterministic defaults.
+[floating_point]
+default_evaluate_first = false
+# Literal controls are specific to 2.3.3. Remove this key for 3.0-011126.
+default_literal_reload = true
+
+# Exact constant identity: function's compiler name, type, IEEE bits, and
+# all equal constants share the adjustment. Binary32 bits must fit 32 bits.
+# [[floating_point.expression_overrides]]
+# translation_unit = "sample.cpp"
+# function = "constant_arguments__FPf"
+# callee = "consume__Fffd" # Optional: restrict to this named call.
+# value_type = "binary32"
+# value_bits = "0x3fa00000"
+# evaluate_first = true
+
+# A literal override controls reuse across unknown-address stores in this TU.
+# [[floating_point.literal_overrides]]
+# translation_unit = "sample.cpp"
+# value_type = "binary32"
+# value_bits = "0x3c23d70a"
+# reload = false

@@ -1,0 +1,21 @@
+{
+  "compiler_path": "./compilers/2.3.3/mwccmips.exe",
+  "compiler_version": "2.3.3",
+  "compiler_options": "-O2 -c -Cpp_exceptions off -RTTI off -strings readonly -pragma \"divbyzerocheck on\"",
+  "wibo_path": "/path/to/wibo",
+  "default_gpr_helper_mask": 0,
+  "default_fpr_helper_mask": 0,
+  "translation_units": [
+    {
+      "name": "sample.cpp",
+      "gpr_helper_mask": 48,
+      "fpr_helper_mask": 4096
+    }
+  ],
+  "floating_point": {
+    "default_evaluate_first": false,
+    "default_literal_reload": true,
+    "expression_overrides": [],
+    "literal_overrides": []
+  }
+}
